@@ -9,5 +9,3 @@ first_number = int(input("Enter first number: "))
 second_number = int(input("Enter second number: "))
 result = first_number + second_number
 print("The sum of %d and %d is %d." % (first_number, second_number, result))
-
-# print("The sum of {} and {} is {}.".format(first_number, second_number, result))
