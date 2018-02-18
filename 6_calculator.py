@@ -7,25 +7,37 @@
 ‘+’, ‘-’, ‘/’, ‘*’. Результат вывести в виде, например, “Result: 12".
 Если пользователь ввел, отличную от разрешенных, операцию результат
 должен быть ‘Result: NaN’ (NaN - сокр. от Not a Number).
-
-Алгоритм: https://goo.gl/fJdGtA
 """
 
-first_operand = float(input("Enter first operand: "))
-second_operand = float(input("Enter second operand: "))
-operator = input("Enter operator: ")
+"""
+Change your code to calculate more than once. 
+Make provision to exit from the program.
 
-result = None
+Algorithm: https://goo.gl/fJdGtA
+"""
 
-if operator == '+':
-    result = first_operand + second_operand
-elif operator == '-':
-    result = first_operand - second_operand
-elif operator == '*':
-    result = first_operand * second_operand
-elif operator == '/':
-    result = first_operand / second_operand
-else:
-    print("Result:", result)
-if result is not None:
-    print("Result:", result)
+while True:
+    print("\nCalculator\n")
+
+    first_operand = float(input("Enter first operand: "))
+    operator = input("Enter operator: ")
+    second_operand = float(input("Enter second operand: "))
+
+    result = None
+
+    if operator == '+':
+        result = first_operand + second_operand
+    elif operator == '-':
+        result = first_operand - second_operand
+    elif operator == '*':
+        result = first_operand * second_operand
+    elif operator == '/':
+        result = first_operand / second_operand
+    else:
+        print("Result:", result)
+    if result is not None:
+        print("Result:", result)
+
+    repeat = input("\nIf you want to continue press 'y': ")
+    if repeat.lower() != 'y':
+        break
