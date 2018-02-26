@@ -10,7 +10,7 @@ counter = 0
 
 while True:
     num = input("Enter number: ")
-    if num.isnumeric() is False:
+    if not num.isnumeric():
         break
     list_numbers.append(int(num))
 
