@@ -22,3 +22,17 @@ def matrix_average(matrix):
 
 
 print(matrix_average(matrix1))
+
+
+# OR
+
+# from functools import reduce
+#
+#
+# def sum_matrix(x, y):
+#     return x + y
+#
+#
+# matrix2 = reduce(sum_matrix, matrix1)
+# result = reduce(sum_matrix, matrix2) / len(matrix2)
+# print(result)
