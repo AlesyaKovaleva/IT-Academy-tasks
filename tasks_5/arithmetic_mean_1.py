@@ -1,12 +1,10 @@
+# -*- coding: utf-8 -*-
+
 """
 Задача 1
 Дана целая матрица А(N,N). Составить программу подсчета среднего
 арифметического значения элементов матрицы.
 """
-
-matrix1 = [[10, 10, 10],
-           [10, 10, 10],
-           [10, 10, 10]]
 
 
 def matrix_average(matrix):
@@ -21,7 +19,15 @@ def matrix_average(matrix):
     return sum_values/count
 
 
-print(matrix_average(matrix1))
+def main():
+    matrix1 = [[10, 10, 10],
+               [10, 10, 10],
+               [10, 10, 10]]
+    print(matrix_average(matrix1))
+
+
+if __name__ == '__main__':
+    main()
 
 
 # OR

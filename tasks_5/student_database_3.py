@@ -19,13 +19,25 @@ def search_student(database, search):
     criteria = set(search)
     students_list = []
 
-    for index in range(len(database)):
-        student = database[index].copy()
+    for id, student in enumerate(database, 1):
         values = set(student.values())
         if criteria.issubset(values):
-            student['id'] = index + 1
+            student['id'] = id
             students_list.append(student)
     return students_list
+
+
+# def search_student(database, search):
+#     criteria = set(search)
+#     students_list = []
+#
+#     for index in range(len(database)):
+#         student = database[index].copy()
+#         values = set(student.values())
+#         if criteria.issubset(values):
+#             student['id'] = index + 1
+#             students_list.append(student)
+#     return students_list
 
 
 def print_search(result_list):
