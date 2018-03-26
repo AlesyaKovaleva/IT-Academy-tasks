@@ -5,6 +5,8 @@
 оценка меньше 3 баллов и посчитать средний балл по классу.
 """
 
+expected_mark = int(input('Введите оценку: '))
+
 with open('my_file.txt', encoding='utf-8') as f:
 
     count = 0
@@ -15,7 +17,7 @@ with open('my_file.txt', encoding='utf-8') as f:
         sum_mark += mark
         count += 1
 
-        if mark < 3:
+        if mark < expected_mark:
             print(text[:-1])
 
     print('Средний балл по классу: {}'.format(sum_mark / count))

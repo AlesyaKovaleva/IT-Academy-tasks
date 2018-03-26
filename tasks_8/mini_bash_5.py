@@ -31,8 +31,22 @@ def present_working_directory(*args):
     print(path)
 
 
-def list_directory_content(*args):
-    content = os.listdir(path=".")
+def list_directory_content(args):
+    if len(args) > 1:
+        print('Введено неверное количество аргументов.')
+        return
+
+    if len(args) == 1:
+        if not os.path.isdir(args[0]):
+            print('Такого объекта не существует')
+            return
+
+        path = args[0]
+    else:
+        path = '.'
+
+    content = os.listdir(path=path)
+
     for file in content:
         print(file)
 
