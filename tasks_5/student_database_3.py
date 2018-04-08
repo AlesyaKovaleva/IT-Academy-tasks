@@ -6,14 +6,6 @@
 Результат выводить в удобочитаемом виде с порядковым номером записи.
 """
 
-student_database = [{'surname': 'Ivanov', 'name': 'Petr', 'gender': 'male', 'age': '22'},
-                    {'surname': 'Petrov', 'name': 'Ivan', 'gender': 'male', 'age': '31'},
-                    {'surname': 'Dolgov', 'name': 'Pavel', 'gender': 'male', 'age': '25'},
-                    {'surname': 'Medved', 'name': 'Lisa', 'gender': 'female', 'age': '31'}]
-
-search_criteria = input('Enter the criteria to search for the student:\n'
-                        '(if there are several criteria, enter them through &): ').split('&')
-
 
 def search_student(database, search):
     criteria = set(search)
@@ -43,9 +35,21 @@ def search_student(database, search):
 def print_search(result_list):
     if result_list:
         for elements in result_list:
-            print('\nStudent № {id}: {surname} {name} {gender} {age}'.format(**elements))
+            print('Student № {id}: {surname} {name} {gender} {age}'.format(**elements))
     else:
         print('Not found')
 
 
-print_search(search_student(student_database, search_criteria))
+def main():
+    student_database = [{'surname': 'Ivanov', 'name': 'Petr', 'gender': 'male', 'age': '22'},
+                        {'surname': 'Petrov', 'name': 'Ivan', 'gender': 'male', 'age': '31'},
+                        {'surname': 'Dolgov', 'name': 'Pavel', 'gender': 'male', 'age': '25'},
+                        {'surname': 'Medved', 'name': 'Lisa', 'gender': 'female', 'age': '31'}]
+
+    search_criteria = input('Enter the criteria to search for the student:\n'
+                            '(if there are several criteria, enter them through &): ').split('&')
+    print_search(search_student(student_database, search_criteria))
+
+
+if __name__ == '__main__':
+    main()
