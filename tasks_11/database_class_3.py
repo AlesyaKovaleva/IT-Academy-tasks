@@ -28,10 +28,10 @@ class BaseDB:
         criteria = set(search)
         students_list = []
 
-        for id, student in enumerate(self.db, 1):
+        for student_id, student in enumerate(self.db, 1):
             values = set(student.values())
             if criteria.issubset(values):
-                students_list.append((id, student))
+                students_list.append((student_id, student))
         return students_list
 
 
@@ -73,22 +73,24 @@ class Student:
         return ' '.join(self.values())
 
 
+choose_db = {
+    'json': JsonDB,
+    'txt': TextDB,
+}
+
+
 def make_list_student(file):
     if not os.path.isfile(file):
         return None
 
-    if file.endswith('json'):
-        data = JsonDB(file)
-        return data
-    elif file.endswith('txt'):
-        data = TextDB(file)
-        return data
+    extension = file.split('.')[-1]
+    return choose_db[extension](file)
 
 
 def print_search(student_list):
     if student_list:
-        for id, student in student_list:
-            print('Student № {}: {}'.format(id, student))
+        for student_id, student in student_list:
+            print('Student № {}: {}'.format(student_id, student))
     else:
         print('Not found')
 

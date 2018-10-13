@@ -17,20 +17,29 @@ import os
 path = input('Введите путь к каталогу: ')
 
 
-def list_files(path, indent=2, file_print=None):
-    if not os.path.isdir(path):
-        print('Такого каталога не существует.', file=file_print)
+def print_dir(dirs, indent=0, file_print=None, root=None):
+
+    if not dirs:
         return
 
-    for root, dirs, files in os.walk(path):
-        for directory in dirs:
-            print('|' + '_' * indent, directory, file=file_print)
-            directory = os.path.join(root, directory)
-            list_files(directory, indent=indent + 2, file_print=file_print)
+    path = dirs[0]
+    rest = dirs[1:]
 
-        for file in files:
-            print('|' + '_' * indent, file, file=file_print)
+    realpath = os.path.abspath(path) if not root else os.path.join(root, path)
+
+    path = os.path.basename(realpath)
+
+    out_template = '%s' if not root else '├' + '─' * indent + ' %s'
+
+    if os.path.isdir(realpath):
+        print(out_template % path, file=file_print)
+        print_dir(os.listdir(realpath), indent=indent + 2, file_print=file_print, root=realpath)
+
+    if os.path.isfile(realpath):
+        print(out_template % path, file=file_print)
+
+    if rest:
+        print_dir(rest, indent=indent, root=root)
 
 
-with open('dirs.txt', 'w', encoding='utf-8') as f:
-    list_files(path, file_print=f)
+print_dir([path])
