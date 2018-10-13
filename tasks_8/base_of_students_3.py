@@ -20,10 +20,10 @@ def make_student(name, surname, gender, age):
     }
 
 
-def make_list_students():
+def make_list_students(filename):
     students_list = []
 
-    with open('my_file.txt', encoding='utf-8') as f:
+    with open(filename, encoding='utf-8') as f:
         for line in f:
             data = line.rstrip('\n').split(',')
             students_list.append(make_student(*data))
@@ -34,7 +34,7 @@ def main():
     search_criteria = input('Enter the criteria to search for the student:\n'
                             '(if there are several criteria, enter them through &): ').split('&')
 
-    print_search(search_student(make_list_students(), search_criteria))
+    print_search(search_student(make_list_students('my_file.txt'), search_criteria))
 
 
 # if __name__ == '__main__':
@@ -55,7 +55,7 @@ def test_make_student():
 
 
 def test_make_list_students():
-    result = make_list_students()
+    result = make_list_students('my_file.txt')
 
     if result == [{'name': 'Петр', 'surname': 'Петров', 'gender': 'мужской', 'age': '23'},
                   {'name': 'Сидор', 'surname': 'Сидоров', 'gender': 'мужской', 'age': '32'},
