@@ -32,7 +32,7 @@ def size(stack):
 
 
 def clear(stack):
-    del stack[:]
+    stack[:] = []
     return 'ok'
 
 
